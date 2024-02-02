@@ -7,7 +7,8 @@
     "start": "node dist",
     "build": "tsc",
     "dev": "nodemon src/index.ts",
-    "prisma": "prisma"
+    "prisma": "prisma",
+    "format": "prettier . --write"
   },
   "keywords": [],
   "author": "Yasu Yumiko",
@@ -22,6 +23,7 @@
     "@types/morgan": "1.9.9",
     "dotenv": "16.4.1",
     "nodemon": "3.0.3",
+    "prettier": "3.2.4",
     "prisma": "5.9.1",
     "ts-node": "10.9.2",
     "typescript": "5.3.3"
