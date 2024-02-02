@@ -18,7 +18,7 @@ A basic template for Backend with Express, Prisma and TypeScript.
 {
   "name": "Catalina",
   "age": 8,
-  "race": "Van turco" // idk
+  "race": "Van turco", // idk
 }
 ```
 
@@ -28,7 +28,7 @@ A basic template for Backend with Express, Prisma and TypeScript.
 {
   "name": "Catalina", // Optional
   "age": 8, // Optional
-  "race": "Van turco" // Optional
+  "race": "Van turco", // Optional
 }
 ```
 

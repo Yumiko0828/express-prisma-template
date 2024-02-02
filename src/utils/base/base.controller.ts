@@ -5,7 +5,7 @@ export class BaseController<TService> {
 
   constructor(
     protected readonly app: Application,
-    protected readonly service: TService
+    protected readonly service: TService,
   ) {
     this.router = Router();
     this.setupRoutes();
