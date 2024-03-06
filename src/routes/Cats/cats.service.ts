@@ -1,5 +1,5 @@
 import { Cat } from "@prisma/client";
-import { PrismaService } from "../../utils/db/prisma.service";
+import { PrismaService } from "@Utils/db/prisma.service";
 import { Service } from "@Core/decorators/service";
 
 /**
