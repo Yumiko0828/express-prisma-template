@@ -1,11 +1,15 @@
 import { Cat } from "@prisma/client";
 import { PrismaService } from "../../utils/db/prisma.service";
+import { Service } from "@Core/decorators/service";
 
 /**
  * A CRUD example
  */
 
-export class CatsService extends PrismaService {
+@Service()
+export class CatsService {
+  constructor(private prisma: PrismaService) {}
+
   getAll() {
     return this.prisma.cat.findMany();
   }

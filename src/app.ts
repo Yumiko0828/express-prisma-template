@@ -1,9 +1,9 @@
 import express from "express";
 import morgan from "morgan";
-import { CatsController } from "./routes/Cats/cats.controller";
-import { CatsService } from "./routes/Cats/cats.service";
-import { notFoundHandler } from "./middlewares/notFoundHandler";
-import { errorHandler } from "./middlewares/errorHandler";
+import { notFoundHandler } from "@Middlewares/notFoundHandler";
+import { errorHandler } from "@Middlewares/errorHandler";
+import { CatsModule } from "@Routes/Cats/cats.module";
+import { initModule } from "@Core/bootstrap/initModule";
 
 const app = express();
 app.set("port", process.env.PORT || 3000);
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-new CatsController(app, new CatsService());
+initModule(app, CatsModule);
 app.use("/*", notFoundHandler);
 app.use(errorHandler);
 

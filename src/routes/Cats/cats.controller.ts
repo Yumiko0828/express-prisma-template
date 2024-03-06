@@ -1,19 +1,28 @@
 import { NextFunction, Request, Response } from "express";
-import { BaseController } from "../../utils/base/base.controller";
 import { CatsService } from "./cats.service";
+import { DELETE, GET, PATCH, POST } from "@Core/decorators/methods";
+import { Controller } from "@Core/decorators/controller";
+import { PrismaService } from "@Utils/db/prisma.service";
 
-export class CatsController extends BaseController<CatsService> {
-  protected setupRoutes(): void {
-    this.router
-      .get("/", this.find.bind(this))
-      .get("/:id", this.findById.bind(this))
-      .post("/", this.create.bind(this))
-      .patch("/:id", this.update.bind(this))
-      .delete("/:id", this.delete.bind(this));
+@Controller("cats")
+export class CatsController {
+  constructor(
+    private service: CatsService,
+    prisma: PrismaService
+  ) {}
 
-    this.app.use("/cats", this.router);
-  }
+  // protected setupRoutes(): void {
+  //   this.router
+  //     .get("/", this.find.bind(this))
+  //     .get("/:id", this.findById.bind(this))
+  //     .post("/", this.create.bind(this))
+  //     .patch("/:id", this.update.bind(this))
+  //     .delete("/:id", this.delete.bind(this));
 
+  //   this.app.use("/cats", this.router);
+  // }
+
+  @GET("/")
   async find(req: Request, res: Response, next: NextFunction) {
     try {
       const cats = await this.service.getAll();
@@ -25,6 +34,7 @@ export class CatsController extends BaseController<CatsService> {
     }
   }
 
+  @GET("/:id")
   async findById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     try {
@@ -37,6 +47,7 @@ export class CatsController extends BaseController<CatsService> {
     }
   }
 
+  @POST("/")
   async create(req: Request, res: Response, next: NextFunction) {
     const data = req.body;
 
@@ -50,6 +61,7 @@ export class CatsController extends BaseController<CatsService> {
     }
   }
 
+  @PATCH("/:id")
   async update(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     const data = req.body;
@@ -66,6 +78,7 @@ export class CatsController extends BaseController<CatsService> {
     }
   }
 
+  @DELETE("/:id")
   async delete(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
 
