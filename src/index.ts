@@ -1,6 +1,6 @@
 import "dotenv/config";
-import { app } from "./app";
-import { prisma } from "./utils/db/prisma.service";
+import { prisma } from "@/utils/db/prisma.service";
+import { app } from "@/app";
 
 prisma
   .$connect()

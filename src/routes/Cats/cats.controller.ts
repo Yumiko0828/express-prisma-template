@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { BaseController } from "../../utils/base/base.controller";
+import { BaseController } from "@/utils/base/base.controller";
 import { CatsService } from "./cats.service";
 
 export class CatsController extends BaseController<CatsService> {
